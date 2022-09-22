@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="stole.css" rel="stylesheet" type="text/css">
+    <title>Document</title>
+</head>
+
+<body> 
+    <section>
+        <h1>Haiii</h1>
+        <div class="countdown">
+
+            <div class="countdown-el days-c">
+                <p class="big-text" id="days">0</p>
+                <span>Hari</span>
+            </div>
+            <div class="countdown-el hour-c">
+                <p class="big-text" id="hours">0</p>
+                <span>Jam</span>
+            </div>
+            <div class="countdown-el mins-c">
+                <p class="big-text" id="mins">0</p>
+                <span>Menit</span>
+            </div>
+            <div class="countdown-el seconds-c">
+                <p class="big-text" id="seconds">0</p>
+                <span>Detik</span>
+            </div>
+        </div>
+        <div class="button-edit">
+            <a href="#page-2">
+                <button type="button">
+                    Selanjutnya
+                </button>
+            </a>
+        </div>
+    </section>
+    <section id="page-2">
+        <div class="overlay">
+                <h3 class="reng">Random Video</h3>
+                <iframe width="310" height="170" src="https://www.youtube.com/embed/v9-zgTbBQKc"
+                    title="VID-20210908-WA0031.mp4" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                    <iframe width="310" height="170" src="https://www.youtube.com/embed/EoKPBPW-Lu4"
+                    title="VID-20210912-WA0013.mp3" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                    <iframe width="310" height="170" src="https://www.youtube.com/embed/oGgDWDNPXKw"
+                    title="VID-20210907-WA0013.mp4" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+    </section>
+    <style></style>
+    <script>
+        const Brithdays = "23 Sep 2022, 01:30:00";
+        const dayBox = document.getElementById("days");
+        const hrBox = document.getElementById("hours");
+        const minBox = document.getElementById("mins");
+        const secBox = document.getElementById("seconds");
+        const endDate = new Date(Brithdays);
+        const endTime = endDate.getTime();
+
+        function countdown() {
+            const todayDate = new Date();
+            const todayTime = todayDate.getTime();
+            const remainingTime = endTime - todayTime;
+            const oneMin = 60 * 1000;
+            const oneHr = 60 * oneMin;
+            const oneDay = 24 * oneHr;
+
+            const addZeroes = (num) => (num < 10 ? `0${num}` : num);
+
+            if (endTime < todayTime) {
+                clearInterval(i);
+                document.querySelector(
+                    ".countdown"
+                ).innerHTML = `<h2>Selamat <br>Ulang Tahun Asyaaa</h2>`;
+            } else {
+                const daysLeft = Math.floor(remainingTime / oneDay);
+                const hrsLeft = Math.floor((remainingTime % oneDay) / oneHr);
+                const minsLeft = Math.floor((remainingTime % oneHr) / oneMin);
+                const secsLeft = Math.floor((remainingTime % oneMin) / 1000);
+
+                dayBox.textContent = addZeroes(daysLeft);
+                hrBox.textContent = addZeroes(hrsLeft);
+                minBox.textContent = addZeroes(minsLeft);
+                secBox.textContent = addZeroes(secsLeft);
+            }
+        }
+
+        const i = setInterval(countdown, 1000);
+        countdown();
+    </script>
+</body>
+
+</html>
